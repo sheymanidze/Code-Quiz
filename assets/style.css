@@ -1,0 +1,56 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  padding-top: 50px;
+  color: rgb(61, 29, 29);
+}
+
+header {
+  text-align: center;
+}
+
+h1 {
+  text-shadow: 1px 1px coral;
+}
+
+.card-footer {
+  text-align: center;
+}
+
+.card-footer::before {
+  content: " ";
+  display: block;
+}
+
+.card-footer::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.Btn {
+  border: solid #ffff 2px;
+  background-color: rgb(241, 102, 83);
+  border-radius: 25px;
+  box-shadow: coral 0px 2px 10px 0px;
+  color: #ffff;
+  display: inline-block;
+  font-size: 22px;
+  line-height: 22px;
+  margin: 16px 16px 16px 20px;
+  padding: 14px 34px;
+  text-align: center;
+  cursor: pointer;
+}
+
+button[disabled] {
+  cursor: default;
+}
+
+.float-right {
+  float: right;
+}
