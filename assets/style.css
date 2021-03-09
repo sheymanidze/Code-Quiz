@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }
 
+.scores {
+  left: 40px;
+}
+.timer {
+  right: 40px;
+}
+
+.scores, .timer {
+    position: absolute;
+    top: 0;
+    color: rgb(61, 29, 29);
+}
+
 .wrapper {
   padding-top: 50px;
   color: rgb(61, 29, 29);
@@ -47,10 +60,11 @@ h1 {
   cursor: pointer;
 }
 
-button[disabled] {
-  cursor: default;
+.Btn:hover {
+  background: rgb(61, 29, 29);
+  color: coral;
 }
 
-.float-right {
-  float: right;
+.answers {
+  color: grey;
 }
