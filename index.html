@@ -14,11 +14,12 @@
     <div id="scores" class="scores">
       <h4>View Scores</h4>
     </div>
-    <div id="timer" class="timer">
-      <h4>Time 90</h4>
+    <div id="time" class="time">
+      <h6>Time:</h6>
+      <h6>60</h6>
     </div>
   </section>
-  <div class="wrapper">
+  <div id="firstP" class="first-page">
     <header>
       <h1>Coding Quiz Challenge</h1>
       <h3>Answer the following question within the time limit. <br> Remember that incorrect answers will reduce your
@@ -26,39 +27,43 @@
         ten seconds. </h3>
     </header>
     <div class="card-footer">
-      <button id="start" class="Btn">Start Quiz</button>
+      <button id="start" class="start">Start Quiz</button>
     </div>
   </div>
+  <div id="quiz" class="quiz">
+    <div id="questions" class="questions">
+      <h2 id="questionText"></h2>
+    </div>
+    <div id="optionList" class="options">
+      <h4 class="choice" id="option1"></h4>
+      <h4 class="choice" id="option2"></h4>
+      <h4 class="choice" id="option3"></h4>
+      <h4 class="choice" id="option4"></h4>
+    </div>
   </div>
-  <div id="questions">
-    <h2 id="questionNumber"></h2>
-    <h2 id="questionText"></h2>
+  <div id="progress" class="progress">
+    <h4 id="correct" class="correct"></h4>
+    <h4 id="wrong" class="wrong"></h4>
   </div>
 
-  <div id="options">
-    <h4 id="option" class="choice1"></h4>
-    <h4 id="option" class="choice2"></h4>
-    <h4 id="option" class="choice3"></h4>
-    <h4 id="option" class="choice4"></h4>
-  </div>
-  <div id="answers" class="answers">
-    <h4 id="correct">Correct</h4>
-    <h4 id="wrong">Wrong</h4>
-  </div>
-  <div id="results">
+  <div id="results" class="results">
     <h4>All Done</h4>
     <h4 id="points">Your final score is</h4>
     <label>Enter Initials:</label>
-    <input type ="text" id="text"/>
-    <button id="submit">Submit</button>
+    <input type="text" id="text" />
+    <button id="submit" class="submit">Submit</button>
   </div>
-  <div id="currentPosition">
-    <button id="goBack">Go Back</button>
-    <button id="clearScores">Clear Scores</button>
+  <div id="currentPosition" class="position">
+    <h4>Highscores</h4>
+    <h5></h5>
+    <button id="goBack" class="back">Go Back</button>
+    <button id="clearScores" class="clear">Clear Scores</button>
   </div>
 
-  </div>
-  <script src="script.js"></script>
+
+
+
+  <script src="js/script.js"></script>
 </body>
 
 </html>

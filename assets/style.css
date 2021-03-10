@@ -6,20 +6,36 @@
 
 .scores {
   left: 40px;
+  top: 0;
 }
-.timer {
+/* .time {
   right: 40px;
+  top: 25px;
+  font-weight: bold;
+} */
+
+.time {
+  display: flex;
+  flex-direction: row;
+  right: 20px;
+  
 }
 
-.scores, .timer {
+.time h6 {
+  font-size: 15px;
+  margin-top: 17px;
+  
+}
+.scores, .time {
     position: absolute;
-    top: 0;
     color: rgb(61, 29, 29);
+    
 }
 
-.wrapper {
+.first-page, .quiz {
   padding-top: 50px;
   color: rgb(61, 29, 29);
+  /*display: none;*/
 }
 
 header {
@@ -45,7 +61,7 @@ h1 {
   clear: both;
 }
 
-.Btn {
+.start {
   border: solid #ffff 2px;
   background-color: rgb(241, 102, 83);
   border-radius: 25px;
@@ -58,13 +74,104 @@ h1 {
   padding: 14px 34px;
   text-align: center;
   cursor: pointer;
+  /*display: none;*/
 }
 
-.Btn:hover {
+.start:hover {
   background: rgb(61, 29, 29);
   color: coral;
 }
 
-.answers {
+.correct, .wrong {
   color: grey;
+  border-top: solid 2px grey;
+  display: flex;
+  align-items: flex-start;
+  position: absolute;
+  margin-left: 35%;
+  margin-top: 20rem;
+  display: none;
+}
+
+
+.quiz {
+  display: block;
+  position: absolute;
+  margin-left: 35%;
+  display: none;
+}
+
+.choice {
+  background-color: coral;
+  width: 6rem;
+}
+
+.options h4 {
+  display: block;
+  color: #ffff;
+  cursor: pointer;
+}
+
+.options h4:hover {
+  background: #ffff;
+  color: rgb(241, 102, 83);
+
+}
+
+.options .active {
+  background: rgb(61, 29, 29);
+}
+.options .disabled {
+  pointer-events: none;
+  
+}
+
+.results {
+  text-align: center;
+  padding-top: 50px;
+  color: rgb(61, 29, 29);
+  display: none;
+}
+
+.submit {
+  border: solid #ffff 2px;
+  background-color: rgb(241, 102, 83);
+  border-radius: 25px;
+  box-shadow: coral 0px 2px 10px 0px;
+  color: #ffff;
+  cursor: pointer;
+}
+
+.submit:hover{
+  background: #ffff;
+  color: rgb(241, 102, 83);
+}
+
+.position {
+  text-align: center;
+  display: none;
+}
+
+.position h4 {
+  font-size: 20px;
+  padding-top: 50px;
+}
+
+.back, .clear {
+  border: solid #ffff 2px;
+  background-color: rgb(241, 102, 83);
+  border-radius: 25px;
+  box-shadow: coral 0px 2px 10px 0px;
+  color: #ffff;
+  cursor: pointer;
+}
+
+.back:hover {
+  background: #ffff;
+  color: rgb(241, 102, 83);
+}
+
+.clear:hover {
+  background: rgb(61, 29, 29);
+  color: coral;
 }
