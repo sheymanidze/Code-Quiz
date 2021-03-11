@@ -13,10 +13,10 @@ var option3 = document.querySelector("#option3");
 var option4 = document.querySelector("#option4");
 
 
-var correct = document.querySelector("#correct");
-var wrong = document.querySelector("#wrong");
 
-console.log(correct);
+var progress = document.querySelector("#progress");
+
+
 
 var results = document.querySelector("#results");
 var points = document.querySelector("#points");
@@ -117,34 +117,27 @@ choice.forEach((choices, choiceNo) => {
     //checking for correct or wrong answer
     if (choiceNo == questionsAll[index].answer) {
 
-      wrong.innerHTML = "Correct";
-      wrong.style.display = "block";
+      progress.innerHTML = "Correct";
+      progress.style.display = "block"
 
     } else {
-      wrong.innerHTML = "Wrong";
-      wrong.style.display = "block"
+      progress.innerHTML = "Wrong";
+      progress.style.display = "block"
       timer = timer - 10;
     }
-
-    wrong.style.display = "none";
 
     //next question
     index++;
 
     if (index >= 4) {
       timer = 0;
-      quiz.style.display = "none";
       results.style.display = "block"
+      progress.style.display = "none";
 
+    } else {
+      loadData();
     }
-
-    loadData();
-
-
-
   })
-
 });
-
 
 

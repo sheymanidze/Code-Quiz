@@ -102,7 +102,7 @@ h1 {
 
 }
 
-.correct, .wrong {
+.progress {
   color: grey;
   border-top: solid 2px grey;
   display: flex;
