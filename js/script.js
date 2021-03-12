@@ -15,8 +15,7 @@ var option4 = document.querySelector("#option4");
 
 
 var progress = document.querySelector("#progress");
-
-
+var initials = document.querySelector("#initials")
 
 var results = document.querySelector("#results");
 var points = document.querySelector("#points");
@@ -24,12 +23,16 @@ var submit = document.querySelector("#submit");
 
 var currentPosition = document.querySelector("#currentPosition");
 
+var goBack = document.querySelector("#goBack");
+var clearScores = document.querySelector("#clearScores");
+
 var choice = document.querySelectorAll(".choice");
 
 var index = 0;
 var timer = 0;
 var interval = 0;
-var correct = 0;
+var points = 0;
+var bonus = 10;
 
 var UserAns = undefined;
 //after clicking start button
@@ -43,7 +46,7 @@ start.addEventListener("click", () => {
     if (timer === 00) {
       clearInterval(interval);
       quiz.style.display = "none";
-      results.style.display = "block"
+      //results.style.display = "block"
 
     } else {
       timer--;
@@ -113,12 +116,18 @@ choice.forEach((choices, choiceNo) => {
     // console.log(questionsAll[index].answer)
     // console.log(typeof choiceNo);
     // console.log(typeof questionsAll[index].answer);
-
+    //counting points
+    incrementPoints = num => {
+      points += num;
+      points.innerText = points;
+    }
     //checking for correct or wrong answer
     if (choiceNo == questionsAll[index].answer) {
 
       progress.innerHTML = "Correct";
       progress.style.display = "block"
+      incrementPoints(bonus);
+
 
     } else {
       progress.innerHTML = "Wrong";
@@ -126,18 +135,54 @@ choice.forEach((choices, choiceNo) => {
       timer = timer - 10;
     }
 
+    setTimeout(() => {
+
+      progress.style.display = "none";
+
+    }, 500);
+
+    //save results at local storage
+    var mostRecentScore = localStorage.getItem("mostRecentScore");
+    localStorage.setItem("mostRecentScore", points);
+    points.innerText = mostRecentScore;
+
+
+
     //next question
     index++;
 
     if (index >= 4) {
       timer = 0;
-      results.style.display = "block"
+      results.style.display = "block";
       progress.style.display = "none";
 
     } else {
       loadData();
+
     }
   })
+
+});
+
+initials.addEventListener("keyup", () => {
+  console.log(initials.value);
+
+})
+
+submit.addEventListener("click", () => {
+  results.style.display = "none";
+  currentPosition.style.display = "block";
+  // if (submit !== initials.value) {
+  //   submit.disabled = true;
+  // }
+});
+
+goBack.addEventListener("click", () => {
+  currentPosition.style.display = "none";
+  start.style.display = "inline-block";
+  firstP.style.display = "block";
+
+
 });
 
 
