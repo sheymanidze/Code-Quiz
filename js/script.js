@@ -22,17 +22,21 @@ var points = document.querySelector("#points");
 var submit = document.querySelector("#submit");
 
 var currentPosition = document.querySelector("#currentPosition");
+var current = document.querySelector("#currentScores");
 
 var goBack = document.querySelector("#goBack");
 var clearScores = document.querySelector("#clearScores");
 
 var choice = document.querySelectorAll(".choice");
 
+var viewScores = document.querySelector("#viewScores")
+
+
+
 var index = 0;
 var timer = 0;
 var interval = 0;
-var points = 0;
-var bonus = 10;
+var totalPoints = 0;
 
 var UserAns = undefined;
 //after clicking start button
@@ -117,16 +121,26 @@ choice.forEach((choices, choiceNo) => {
     // console.log(typeof choiceNo);
     // console.log(typeof questionsAll[index].answer);
     //counting points
-    incrementPoints = num => {
-      points += num;
-      points.innerText = points;
-    }
+
+
+    // incrementPoints = num => {
+    //   console.log("num");
+    //   totalPoints = totalPoints + 10;
+    //   points.innerText = totalPoints;
+
+
+    // }
+    console.log(index)
     //checking for correct or wrong answer
     if (choiceNo == questionsAll[index].answer) {
 
+
       progress.innerHTML = "Correct";
-      progress.style.display = "block"
-      incrementPoints(bonus);
+      progress.style.display = "block";
+      totalPoints = totalPoints + 10;
+      points.innerText = totalPoints;
+
+
 
 
     } else {
@@ -141,10 +155,16 @@ choice.forEach((choices, choiceNo) => {
 
     }, 500);
 
+
+
     //save results at local storage
-    var mostRecentScore = localStorage.getItem("mostRecentScore");
-    localStorage.setItem("mostRecentScore", points);
-    points.innerText = mostRecentScore;
+
+
+    // var count = localStorage.getItem("count")
+    // currentPosition.textContent = count;
+    // localStorage.setItem("count", count);
+    // var mostRecentScore = localStorage.getItem("mostRecentScore")
+    // localStorage.getItem("mostRecentScore",);
 
 
 
@@ -161,28 +181,60 @@ choice.forEach((choices, choiceNo) => {
 
     }
   })
-
 });
+
+// var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+// console.log(highScores);
+
 
 initials.addEventListener("keyup", () => {
   console.log(initials.value);
-
+  //if (submit !== initials) {
+  //submit.disabled = true;
+  //}
 })
 
 submit.addEventListener("click", () => {
   results.style.display = "none";
   currentPosition.style.display = "block";
-  // if (submit !== initials.value) {
-  //   submit.disabled = true;
-  // }
+
+  var scores = {
+    currentInitials: initials.value,
+    score: totalPoints.value
+  };
+
+  localStorage.setItem("scores", JSON.stringify(scores));
+  renderMessage();
+
+  function renderMessage() {
+    var highScores = JSON.parse(localStorage.getItem("scores"));
+    if (highScores !== null) {
+      currentScore.textContent = scores.currentInitials + " " + scores.score;
+    }
+  }
+
 });
+
+// var scoores = {
+//   "name1": 25,
+//   "name2": 35,
+//   "adam": 50
+// }
 
 goBack.addEventListener("click", () => {
   currentPosition.style.display = "none";
   start.style.display = "inline-block";
   firstP.style.display = "block";
+  index = 0;
+
+
+  // give an object clearInterval();
 
 
 });
+
+viewScores.addEventListener("click", () => {
+
+})
 
 

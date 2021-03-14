@@ -4,34 +4,33 @@
   box-sizing: border-box;
 }
 
-.scores {
+.viewScores {
+  display: flex;
   left: 40px;
   top: 0;
+  cursor: pointer;
 }
 
 .time {
   display: flex;
   flex-direction: row;
   right: 20px;
-  
-}
-
-.time {
   font-size: 15px;
   margin-top: 15px;
   font-weight: bold;
   
 }
+
 .time span {
   margin-left: 5px;
 }
-.scores, .time {
+.viewScores, .time {
     position: absolute;
     color: rgb(61, 29, 29);
     
 }
 
-.first-page, .quiz {
+.first-page, .quiz, .position {
   padding-top: 50px;
   color: rgb(61, 29, 29);
   /*display: none;*/
@@ -137,13 +136,6 @@ h1 {
   text-align: center;
   display: none;
 }
-
-.position h4 {
-  font-size: 20px;
-  padding-top: 50px;
-}
-
-
 
 .back, .clear {
   border: solid #ffff 2px;
