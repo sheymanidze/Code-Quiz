@@ -137,6 +137,17 @@ h1 {
   display: none;
 }
 
+ol {
+  background: rgb(241, 102, 83);
+  opacity: 70%;
+  color: #ffff;
+  display: flex;
+  width: 8rem;
+  padding-left: 1rem;
+  align-content: center;
+ 
+}
+
 .back, .clear {
   border: solid #ffff 2px;
   background-color: rgb(241, 102, 83);

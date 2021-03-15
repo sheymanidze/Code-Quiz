@@ -39,19 +39,20 @@ var interval = 0;
 var totalPoints = 0;
 var maxScores = 5;
 
-var UserAns = undefined;
+
 //after clicking start button
 start.addEventListener("click", () => {
   start.style.display = "none";
   firstP.style.display = "none";
   quiz.style.display = "block";
 
-  timer = 60;
+  timer = 40;
   var countDown = () => {
     if (timer === 00) {
       clearInterval(interval);
       quiz.style.display = "none";
       //results.style.display = "block"
+
 
     } else {
       timer--;
@@ -137,6 +138,7 @@ choice.forEach((choices, choiceNo) => {
       progress.innerHTML = "Wrong";
       progress.style.display = "block"
       timer = timer - 10;
+      points.innerText = 0;
     }
 
     setTimeout(() => {
@@ -148,7 +150,7 @@ choice.forEach((choices, choiceNo) => {
     //next question
     index++;
 
-    if (index >= 4) {
+    if (index >= questionsAll.length) {
       timer = 0;
       results.style.display = "block";
       progress.style.display = "none";
@@ -178,21 +180,12 @@ submit.addEventListener("click", () => {
     score: totalPoints
   };
 
-  localStorage.setItem("scores", JSON.stringify(scores));
+  //localStorage.setItem("scores", JSON.stringify(scores));
+  scores = JSON.parse(localStorage.getItem("scores")) || [];
+  console.log(scores)
   renderMessage();
 
 
-  // var highScores = JSON.parse(localStorage.getItem("scores")) || [];
-  // console.log(highScores)
-
-
-  // highScores.sort((a, b) => b.scores - a.scores);
-  // console.log(highScores)
-
-  //highScores.splice(5);
-
-  // localStorage.setItem('highScores', JSON.stringify(highScores));
-  // console.log(highScores)
 
   function renderMessage() {
 
