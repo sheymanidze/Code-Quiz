@@ -37,6 +37,7 @@ var index = 0;
 var timer = 0;
 var interval = 0;
 var totalPoints = 0;
+var maxScores = 5;
 
 var UserAns = undefined;
 //after clicking start button
@@ -122,26 +123,15 @@ choice.forEach((choices, choiceNo) => {
     // console.log(typeof questionsAll[index].answer);
     //counting points
 
-
-    // incrementPoints = num => {
-    //   console.log("num");
-    //   totalPoints = totalPoints + 10;
-    //   points.innerText = totalPoints;
-
-
-    // }
     console.log(index)
     //checking for correct or wrong answer
     if (choiceNo == questionsAll[index].answer) {
-
 
       progress.innerHTML = "Correct";
       progress.style.display = "block";
       totalPoints = totalPoints + 10;
       points.innerText = totalPoints;
-
-
-
+      localStorage.setItem("totalPoints", totalPoints)
 
     } else {
       progress.innerHTML = "Wrong";
@@ -154,19 +144,6 @@ choice.forEach((choices, choiceNo) => {
       progress.style.display = "none";
 
     }, 500);
-
-
-
-    //save results at local storage
-
-
-    // var count = localStorage.getItem("count")
-    // currentPosition.textContent = count;
-    // localStorage.setItem("count", count);
-    // var mostRecentScore = localStorage.getItem("mostRecentScore")
-    // localStorage.getItem("mostRecentScore",);
-
-
 
     //next question
     index++;
@@ -183,10 +160,6 @@ choice.forEach((choices, choiceNo) => {
   })
 });
 
-// var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-// console.log(highScores);
-
-
 initials.addEventListener("keyup", () => {
   console.log(initials.value);
   //if (submit !== initials) {
@@ -198,28 +171,44 @@ submit.addEventListener("click", () => {
   results.style.display = "none";
   currentPosition.style.display = "block";
 
+
+  //save results at local storage
   var scores = {
     currentInitials: initials.value,
-    score: totalPoints.value
+    score: totalPoints
   };
 
   localStorage.setItem("scores", JSON.stringify(scores));
   renderMessage();
 
+
+  // var highScores = JSON.parse(localStorage.getItem("scores")) || [];
+  // console.log(highScores)
+
+
+  // highScores.sort((a, b) => b.scores - a.scores);
+  // console.log(highScores)
+
+  //highScores.splice(5);
+
+  // localStorage.setItem('highScores', JSON.stringify(highScores));
+  // console.log(highScores)
+
   function renderMessage() {
-    var highScores = JSON.parse(localStorage.getItem("scores"));
-    if (highScores !== null) {
+
+    if (scores !== null) {
       currentScore.textContent = scores.currentInitials + " " + scores.score;
     }
+
+    // scores.sort((a, b) => b.scores - a.scores);
+    // console.log(scores)
+
+    // scores.splice(5);
+    // console.log(scores);
   }
 
 });
 
-// var scoores = {
-//   "name1": 25,
-//   "name2": 35,
-//   "adam": 50
-// }
 
 goBack.addEventListener("click", () => {
   currentPosition.style.display = "none";
@@ -232,6 +221,11 @@ goBack.addEventListener("click", () => {
 
 
 });
+
+clearScores.addEventListener("click", () => {
+  currentScore.style.display = "none";
+});
+
 
 viewScores.addEventListener("click", () => {
 
