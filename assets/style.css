@@ -144,7 +144,7 @@ ol {
   display: flex;
   flex-direction: column;
   width: 8rem;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
   margin-left: 46%;
  
 }
@@ -179,12 +179,17 @@ ol {
     margin-left: 44%;
    }
 }
-
+@media screen and (max-width: 830px) {
+  ol {
+    margin-left: 42%;
+   }
+  }
 @media screen and (max-width: 430px) {
   ol {
     margin-left: 27%;
    }
   }
+  
   @media screen and (max-width: 283px) {
   .time {
     flex-direction: column;

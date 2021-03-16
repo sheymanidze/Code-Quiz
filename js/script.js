@@ -36,7 +36,6 @@ var viewScores = document.querySelector("#viewScores")
 
 
 var index = 0;
-var timer = 0;
 var totalPoints = 0;
 var maxScores = 5;
 var secondsLeft = 40;
@@ -49,6 +48,7 @@ start.addEventListener("click", () => {
   start.style.display = "none";
   firstP.style.display = "none";
   quiz.style.display = "block";
+  totalPoints = 0
   loadData();
   secondsLeft = 40;
   startTimer();
@@ -70,15 +70,9 @@ function quizOver() {
   results.style.display = "block";
   quiz.style.display = "none";
   clearInterval(timeInterval);
-  secondsLeft = 0;
+  secondsLeft = 1;
 
-  if (secondsLeft = 0) {
-    secondsLeft = 0;
-  }
-
-  //results.style.display = "block"
-
-
+  //time.style.display = "none"
 }
 
 var questionsAll = [{
@@ -156,6 +150,7 @@ choice.forEach((choices, choiceNo) => {
     //next question
     index++;
 
+    //end of quiestions
     if (index >= questionsAll.length) {
       results.style.display = "block";
       quiz.style.display = "none";
@@ -182,18 +177,19 @@ submit.addEventListener("click", () => {
   highScores.push(updatedScores);
   localStorage.setItem("scores", JSON.stringify(highScores));
 
-
+  initials.value = ''
   showHighScores();
 
 });
 
-
+//highest score first
 function showHighScores() {
   var highScores = JSON.parse(localStorage.getItem("scores")) || [];
   highScores.sort(function (a, b) {
-    b.scores - a.scores;
+    return a.score < b.score ? 1 : -1;
   });
   highScores.splice(5);
+  //ordered list
   highScores.forEach(function (item) {
     var liTag = document.createElement("li");
     liTag.textContent = item.currentInitials + " " + item.score;
@@ -220,12 +216,11 @@ clearScores.addEventListener("click", () => {
 
 
 viewScores.addEventListener("click", () => {
-  // currentPosition.style.display = "none";
-  // start.style.display = "none";
-  // firstP.style.display = "none";
-  // results.style.display = "none"
-  // viewScoresMain.style.display = "block"
-  //showHighScores();
+  start.style.display = "none";
+  firstP.style.display = "none";
+  results.style.display = "none"
+  currentPosition.style.display = "block"
+  showHighScores();
 
 
 });
