@@ -145,7 +145,7 @@ ol {
   flex-direction: column;
   width: 8rem;
   padding-left: 1rem;
-  margin-left: 44%;
+  margin-left: 46%;
  
 }
 
@@ -167,3 +167,29 @@ ol {
   background: rgb(61, 29, 29);
   color: coral;
 }
+
+@media screen and (max-width: 1282px) {
+  ol {
+    margin-left: 45%;
+   }
+}
+
+@media screen and (max-width: 968px) {
+  ol {
+    margin-left: 44%;
+   }
+}
+
+@media screen and (max-width: 430px) {
+  ol {
+    margin-left: 27%;
+   }
+  }
+  @media screen and (max-width: 283px) {
+  .time {
+    flex-direction: column;
+    margin-top: 40px;
+    margin-right: 30px;
+  }
+}
+  
