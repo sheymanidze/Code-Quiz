@@ -72,7 +72,7 @@ function quizOver() {
   clearInterval(timeInterval);
   secondsLeft = 0;
 
-  if (secondsLeft < 0) {
+  if (secondsLeft = 0) {
     secondsLeft = 0;
   }
 
@@ -213,15 +213,19 @@ goBack.addEventListener("click", () => {
 clearScores.addEventListener("click", () => {
   currentScore.style.display = "none";
   //sessionStorage.clear();
+  //showHighScores.clear();
+  localStorage.clear();
+  //localStorage.removeItem(showHighScores);
 });
 
 
 viewScores.addEventListener("click", () => {
-  currentPosition.style.display = "none";
-  start.style.display = "none";
-  firstP.style.display = "none";
-  results.style.display = "none"
-  viewScoresMain.style.display = "block"
+  // currentPosition.style.display = "none";
+  // start.style.display = "none";
+  // firstP.style.display = "none";
+  // results.style.display = "none"
+  // viewScoresMain.style.display = "block"
+  //showHighScores();
 
 
 });
