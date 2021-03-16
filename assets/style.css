@@ -30,7 +30,7 @@
     
 }
 
-.first-page, .quiz, .position {
+.first-page, .quiz, .position, .viewScoresMain {
   padding-top: 50px;
   color: rgb(61, 29, 29);
   /*display: none;*/
@@ -142,9 +142,10 @@ ol {
   opacity: 70%;
   color: #ffff;
   display: flex;
+  flex-direction: column;
   width: 8rem;
   padding-left: 1rem;
-  align-content: center;
+  margin-left: 44%;
  
 }
 

@@ -29,42 +29,58 @@ var clearScores = document.querySelector("#clearScores");
 
 var choice = document.querySelectorAll(".choice");
 
+var viewScoresMain = document.querySelector("#viewScoresMain")
+
 var viewScores = document.querySelector("#viewScores")
 
 
 
 var index = 0;
 var timer = 0;
-var interval = 0;
 var totalPoints = 0;
 var maxScores = 5;
+var secondsLeft = 40;
+var timeInterval;
 
 
 //after clicking start button
 start.addEventListener("click", () => {
+  index = 0;
   start.style.display = "none";
   firstP.style.display = "none";
   quiz.style.display = "block";
-
-  timer = 40;
-  var countDown = () => {
-    if (timer === 00) {
-      clearInterval(interval);
-      quiz.style.display = "none";
-      //results.style.display = "block"
-
-
-    } else {
-      timer--;
-      time.innerText = "Time: " + timer;
-
-    }
-  }
-  setInterval(countDown, 1000);
+  loadData();
+  secondsLeft = 40;
+  startTimer();
 
 });
 
-//all questions with answers
+function startTimer() {
+  timerInterval = setInterval(function () {
+    secondsLeft--;
+    time.textContent = "Time: " + secondsLeft;
+    if (secondsLeft <= 0) {
+      clearInterval(timerInterval);
+      return quizOver();
+    }
+  }, 1000);
+}
+
+function quizOver() {
+  results.style.display = "block";
+  quiz.style.display = "none";
+  clearInterval(timeInterval);
+  secondsLeft = 0;
+
+  if (secondsLeft < 0) {
+    secondsLeft = 0;
+  }
+
+  //results.style.display = "block"
+
+
+}
+
 var questionsAll = [{
 
   question: "In the DOM, all HTML elements are defined as",
@@ -115,16 +131,6 @@ loadData();
 choice.forEach((choices, choiceNo) => {
   choices.addEventListener("click", () => {
 
-    // console.log(this);
-    // console.log(choices);
-
-    // console.log(choiceNo)
-    // console.log(questionsAll[index].answer)
-    // console.log(typeof choiceNo);
-    // console.log(typeof questionsAll[index].answer);
-    //counting points
-
-    console.log(index)
     //checking for correct or wrong answer
     if (choiceNo == questionsAll[index].answer) {
 
@@ -137,7 +143,7 @@ choice.forEach((choices, choiceNo) => {
     } else {
       progress.innerHTML = "Wrong";
       progress.style.display = "block"
-      timer = timer - 10;
+      secondsLeft = secondsLeft - 10;
       points.innerText = 0;
     }
 
@@ -151,9 +157,10 @@ choice.forEach((choices, choiceNo) => {
     index++;
 
     if (index >= questionsAll.length) {
-      timer = 0;
       results.style.display = "block";
-      progress.style.display = "none";
+      quiz.style.display = "none";
+      quizOver();
+
 
     } else {
       loadData();
@@ -162,66 +169,59 @@ choice.forEach((choices, choiceNo) => {
   })
 });
 
-initials.addEventListener("keyup", () => {
-  console.log(initials.value);
-  //if (submit !== initials) {
-  //submit.disabled = true;
-  //}
-})
-
+//after clicking "submit" button
 submit.addEventListener("click", () => {
   results.style.display = "none";
   currentPosition.style.display = "block";
 
-
-  //save results at local storage
-  var scores = {
+  var updatedScores = {
     currentInitials: initials.value,
     score: totalPoints
   };
-
-  //localStorage.setItem("scores", JSON.stringify(scores));
-  scores = JSON.parse(localStorage.getItem("scores")) || [];
-  console.log(scores)
-  renderMessage();
+  var highScores = JSON.parse(localStorage.getItem("scores")) || [];
+  highScores.push(updatedScores);
+  localStorage.setItem("scores", JSON.stringify(highScores));
 
 
-
-  function renderMessage() {
-
-    if (scores !== null) {
-      currentScore.textContent = scores.currentInitials + " " + scores.score;
-    }
-
-    // scores.sort((a, b) => b.scores - a.scores);
-    // console.log(scores)
-
-    // scores.splice(5);
-    // console.log(scores);
-  }
+  showHighScores();
 
 });
 
+
+function showHighScores() {
+  var highScores = JSON.parse(localStorage.getItem("scores")) || [];
+  highScores.sort(function (a, b) {
+    b.scores - a.scores;
+  });
+  highScores.splice(5);
+  highScores.forEach(function (item) {
+    var liTag = document.createElement("li");
+    liTag.textContent = item.currentInitials + " " + item.score;
+    var loTag = document.getElementById("currentScore");
+    loTag.appendChild(liTag);
+  });
+
+}
 
 goBack.addEventListener("click", () => {
   currentPosition.style.display = "none";
   start.style.display = "inline-block";
   firstP.style.display = "block";
-  index = 0;
-
-
-  // give an object clearInterval();
-
 
 });
 
 clearScores.addEventListener("click", () => {
   currentScore.style.display = "none";
+  //sessionStorage.clear();
 });
 
 
 viewScores.addEventListener("click", () => {
+  currentPosition.style.display = "none";
+  start.style.display = "none";
+  firstP.style.display = "none";
+  results.style.display = "none"
+  viewScoresMain.style.display = "block"
 
-})
 
-
+});
