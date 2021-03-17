@@ -71,8 +71,6 @@ function quizOver() {
   quiz.style.display = "none";
   clearInterval(timeInterval);
   secondsLeft = 1;
-
-  //time.style.display = "none"
 }
 
 var questionsAll = [{
@@ -140,7 +138,7 @@ choice.forEach((choices, choiceNo) => {
       totalPoints = totalPoints + 10;
       points.innerText = totalPoints;
       localStorage.setItem("totalPoints", totalPoints)
-      console.log(totalPoints);
+
 
     } else {
       progress.innerHTML = "Wrong";
