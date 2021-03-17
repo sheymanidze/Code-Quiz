@@ -38,7 +38,7 @@ var viewScores = document.querySelector("#viewScores")
 var index = 0;
 var totalPoints = 0;
 var maxScores = 5;
-var secondsLeft = 40;
+var secondsLeft = 60;
 var timeInterval;
 
 
@@ -50,7 +50,7 @@ start.addEventListener("click", () => {
   quiz.style.display = "block";
   totalPoints = 0
   loadData();
-  secondsLeft = 40;
+  secondsLeft = 60;
   startTimer();
 
 });
@@ -106,6 +106,13 @@ var questionsAll = [{
   choice3: "3. concat()",
   choice4: "4. All of the above",
   answer: "2"
+}, {
+  question: "JSON objects are surrounded by __",
+  choice1: "1. ()",
+  choice2: "2. {}",
+  choice3: "3. []",
+  choice4: "4. <>",
+  answer: "1"
 }
 ]
 
@@ -133,12 +140,13 @@ choice.forEach((choices, choiceNo) => {
       totalPoints = totalPoints + 10;
       points.innerText = totalPoints;
       localStorage.setItem("totalPoints", totalPoints)
+      console.log(totalPoints);
 
     } else {
       progress.innerHTML = "Wrong";
       progress.style.display = "block"
       secondsLeft = secondsLeft - 10;
-      points.innerText = 0;
+      totalPoints.innerText = 0;
     }
 
     setTimeout(() => {
