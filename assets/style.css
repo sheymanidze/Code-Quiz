@@ -11,6 +11,7 @@
   cursor: pointer;
 }
 
+/*Timer*/
 .time {
   display: flex;
   flex-direction: row;
@@ -30,10 +31,9 @@
     
 }
 
-.first-page, .quiz, .position, .viewScoresMain {
+.first-page, .quiz, .position {
   padding-top: 50px;
   color: rgb(61, 29, 29);
-  /*display: none;*/
 }
 
 header {
@@ -72,7 +72,6 @@ h1 {
   padding: 14px 34px;
   text-align: center;
   cursor: pointer;
-  /*display: none;*/
 }
 
 .start:hover {
@@ -87,6 +86,7 @@ h1 {
   display: none
 }
 
+/*Answers*/
 .options h4 {
   display:block;
   color: #ffff;
@@ -101,6 +101,7 @@ h1 {
 
 }
 
+/*Wrong/Correct indicators*/
 .progress {
   color: grey;
   border-top: solid 2px grey;
@@ -111,6 +112,8 @@ h1 {
   margin-top: 20rem;
   display: none;
 }
+
+/*Current points*/
 .results {
   text-align: center;
   padding-top: 50px;
@@ -132,6 +135,7 @@ h1 {
   color: rgb(241, 102, 83);
 }
 
+/*Highscores*/
 .position {
   text-align: center;
   display: none;
@@ -168,6 +172,7 @@ ol {
   color: coral;
 }
 
+/*ol items*/
 @media screen and (max-width: 1282px) {
   ol {
     margin-left: 45%;
@@ -190,6 +195,7 @@ ol {
    }
   }
   
+  /*Timer*/
   @media screen and (max-width: 283px) {
   .time {
     flex-direction: column;

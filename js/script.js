@@ -1,9 +1,10 @@
+//first start page
 var start = document.querySelector("#start");
 var firstP = document.querySelector("#firstP")
 var time = document.querySelector("#time");
 
+//questions and answers
 var quiz = document.querySelector("#quiz");
-
 
 var questionText = document.querySelector("#questionText");
 
@@ -13,7 +14,7 @@ var option3 = document.querySelector("#option3");
 var option4 = document.querySelector("#option4");
 
 
-
+//points, enter initails
 var progress = document.querySelector("#progress");
 var initials = document.querySelector("#initials")
 
@@ -21,15 +22,15 @@ var results = document.querySelector("#results");
 var points = document.querySelector("#points");
 var submit = document.querySelector("#submit");
 
+//highscores area
 var currentPosition = document.querySelector("#currentPosition");
 var current = document.querySelector("#currentScores");
 
+//goBack, clearScores buttons
 var goBack = document.querySelector("#goBack");
 var clearScores = document.querySelector("#clearScores");
 
 var choice = document.querySelectorAll(".choice");
-
-var viewScoresMain = document.querySelector("#viewScoresMain")
 
 var viewScores = document.querySelector("#viewScores")
 
@@ -111,6 +112,13 @@ var questionsAll = [{
   choice3: "3. []",
   choice4: "4. <>",
   answer: "1"
+}, {
+  question: "When exchanging data between a browser and a server, the data can only be __",
+  choice1: "1. text",
+  choice2: "2. number",
+  choice3: "3. symbol",
+  choice4: "4. All of the above",
+  answer: "0"
 }
 ]
 
@@ -205,6 +213,7 @@ function showHighScores() {
 
 }
 
+//"go back" button
 goBack.addEventListener("click", () => {
   currentPosition.style.display = "none";
   start.style.display = "inline-block";
@@ -212,15 +221,14 @@ goBack.addEventListener("click", () => {
 
 });
 
+//"clear scores" button
 clearScores.addEventListener("click", () => {
   currentScore.style.display = "none";
-  //sessionStorage.clear();
-  //showHighScores.clear();
+  //delete all saved scores from local storage
   localStorage.clear();
-  //localStorage.removeItem(showHighScores);
 });
 
-
+//View all saved scores
 viewScores.addEventListener("click", () => {
   start.style.display = "none";
   firstP.style.display = "none";
