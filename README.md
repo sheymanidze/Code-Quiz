@@ -40,15 +40,17 @@ To run a project, please follow the link [https://sheymanidze.github.io/Code-Qui
 
 
 ## Screenhots
- ![Main page]()
+ ![Main page](/assets/images/1.png)
 
- ![Questions and answers]()
+ ![Questions and answers](assets/images/2.png)
 
- ![Enter Initials/submit]()
+ ![Enter Initials/submit](assets/images/3.png)
 
- ![View Scores]()
+ ![View 5 highest scores](assets/images/4.png)
+ 
+ ![View all saved scores](assets/images/5.png)
 
- ![Local Storage]()
+ ![Local Storage](assets/images/6.png)
 
 
 ## Comments
