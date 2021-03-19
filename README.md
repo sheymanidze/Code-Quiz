@@ -40,6 +40,7 @@ To run a project, please follow the link [https://sheymanidze.github.io/Code-Qui
 
 
 ## Screenhots
+
  ![Main page](/assets/images/1.png)
 
  ![Questions and answers](assets/images/2.png)
